@@ -28,4 +28,12 @@ class ConnectionTest < Minitest::Test
     end
   end
 
+  def test_raise_service_timeout_if_service_returns_504
+    @srv.stubs(:status_code).returns(504)
+
+    assert_raises Connection::ServiceTimeOut do
+      @conn.connect_to_external_service(@srv)
+    end
+  end
+
 end
