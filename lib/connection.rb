@@ -14,7 +14,6 @@ class Connection
 
 
   def connect_to_external_service(srvc)
-    require "pry"; binding.pry
     raise ServiceNotFound if srvc.status_code == 404
     raise ServiceTimeOut if srvc.status_code == 504
     # do other stuff

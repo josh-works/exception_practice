@@ -1,18 +1,12 @@
 require './lib/connection'
-require 'rubygems'
 require 'minitest/autorun'
-require 'pry'
-
-require "minitest/unit"
 require "mocha/minitest"
-
 
 class ConnectionTest < Minitest::Test
 
   def setup
     @conn = Connection.new
     @srv = stub('Service object')
-
   end
 
   def test_connect_to_external_service_returns_200
