@@ -6,7 +6,7 @@ class ConnectionTest < Minitest::Test
 
   def setup
     @conn = Connection.new
-    @srv = stub('Service object')
+    @srv = mock('Service object')
   end
 
   def test_connect_to_external_service_returns_200
@@ -14,7 +14,7 @@ class ConnectionTest < Minitest::Test
     assert_equal 200, @conn.connect_to_external_service(@srv)
   end
 
-  def test_raise_error_when_service_returns_4xx_using_stubs
+  def test_raise_error_when_service_returns_404_using_stubs
     @srv.stubs(:status_code).returns(404)
 
     assert_raises Connection::ServiceNotFound do
