@@ -16,16 +16,15 @@ class Connection
 
   def connect_to_external_service(srvc)
     puts "inside connect_to_external_service"
-    begin
+    # begin
       puts "about to raise an error for #{srvc.status_code}"
-      raise ServiceNotFound if srvc.status_code == 404
+    raise if srvc.status_code == 404
       puts 'after the raise. WILL I EXECUTE?'
-    rescue => ex
-      puts ex
-    end
+    # rescue => ex
+    #   puts ex
+    # end
     puts "after the rescue, end of method"
   end
 
   class ServiceNotFound < StandardError; end
-  class ServiceTimeOut < StandardError; end
 end
